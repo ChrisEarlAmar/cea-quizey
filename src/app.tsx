@@ -1,21 +1,31 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
-// import { Button } from "@/components/ui/button"
-import { BrowserRouter } from 'react-router-dom';
-// import QuizList  from './components/pages/QuizList';
-// import QuizEditor  from './components/pages/QuizEditor';
-// import QuizPlayer from './components/pages/QuizPlayer';
-// import Home from './components/pages/home';
+import { BrowserRouter, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from "@/components/theme-provider"
-// import { BrowserRouter } from 'react-router-dom';
 import Layout from './dashboard/layout';
 
 import Router from "@/router";
 
+const RedirectHandler = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const redirect = sessionStorage.getItem('quizey-redirect');
+    if (redirect) {
+      sessionStorage.removeItem('quizey-redirect');
+      const path = redirect.replace(/^\/quizey/, '') || '/';
+      navigate(path, { replace: true });
+    }
+  }, [navigate]);
+
+  return null;
+};
+
 createRoot(document.getElementById('root')!).render(
   <Fragment>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/+$/, '')}>
       <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+        <RedirectHandler />
         <Layout>
           <Router />
         </Layout>

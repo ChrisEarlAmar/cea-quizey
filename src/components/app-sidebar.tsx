@@ -59,7 +59,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
             <span>
-              <img src="/logo.png" alt="Quizey Logo" className="w-5 h-5 object-contain" />
+              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Quizey Logo" className="w-5 h-5 object-contain" />
               <span className="text-base font-semibold ml-2">Quizey</span>
             </span>
             </SidebarMenuButton>
