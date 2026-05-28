@@ -4,8 +4,10 @@ import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa';
 import path from "path"
 
+const isCapacitor = process.env.BUILD_TARGET === 'capacitor';
+
 export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/quizey/' : '/',
+  base: command === 'build' ? (isCapacitor ? '/' : '/Quizey/') : '/',
   plugins: [
     react(),
     tailwindcss(),
