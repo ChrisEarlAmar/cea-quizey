@@ -44,9 +44,7 @@ This builds the APK directly via the Capacitor CLI (non-interactive, expects And
 If you replace the logo at `public/logo.png`, regenerate the Android icons:
 
 ```bash
-# The source file for icon generation is assets/icon.png (copy of logo.png)
-npx capacitor-assets generate icon --android
-npx cap sync
+npm run cap:icons
 ```
 
-This generates all required icon sizes (mdpi through xxxhdpi) and adaptive icon assets.
+This resizes the logo to all required densities (ldpi through xxxhdpi) and generates adaptive icon assets with a white background.

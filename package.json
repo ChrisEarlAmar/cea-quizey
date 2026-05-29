@@ -10,6 +10,7 @@
     "cap:sync": "npx cap sync",
     "cap:open": "npx cap open android",
     "cap:build": "npx cap build android",
+    "cap:icons": "node scripts/generate-icons.cjs && npx cap sync",
     "lint": "eslint .",
     "preview": "vite preview"
   },
